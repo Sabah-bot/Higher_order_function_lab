@@ -33,7 +33,7 @@ ScranAdvisor.prototype.findRestaurantsByCity = function(city) {
 
 module.exports = ScranAdvisor;
 
-// EXTENSION:Can find the most common cuisine type
+// EXTENSION Attepmted:Can find the most common cuisine type
 ScranAdvisor.prototype.findMostCommonCuisine = function() {
     if (this.restaurants.length === 0) {
         return null; // Return null if there are no restaurants
