@@ -122,17 +122,16 @@ describe('ScranAdvisor', () => {
           expect(actual).toEqual(expected);
     })
 
-    // Extensions- attempted
+    // Extensions
 
     test('can find the most common cuisine type', () => {
       const mostCommonCuisine = scranAdvisor.findMostCommonCuisine();
       const expected = 'JAPANESE';
-      const actual = 'JAPANESE';
+      const actual = scranAdvisor.mostCommonCuisine();
       expect(actual).toEqual(expected);
     });
 
 
-    // DID NOT ATTEMPT! 
 
     test.skip('can find restaurant with substring', () => {
     

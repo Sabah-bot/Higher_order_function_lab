@@ -33,11 +33,35 @@ ScranAdvisor.prototype.findRestaurantsByCity = function(city) {
 
 module.exports = ScranAdvisor;
 
-// EXTENSION Attepmted:Can find the most common cuisine type
+// EXTENSION Attepmted: Can find the most common cuisine type
 ScranAdvisor.prototype.findMostCommonCuisine = function() {
-    if (this.restaurants.length === 0) {
-        return null; // Return null if there are no restaurants
-    }
+    // loop through each resturant 
+    // loop through the cusisines
+    // count the instances of the cuisiine as a i go 
+    // store these values....object/dictionary
+    
+    const cuisineCounter = {}; 
+    this.restaurants.forEach(restaurant => {
+        restaurant.cuisines.forEach(cuisine => {
+            if (cuisineCounter[cuisine]){
+                cuisineCounter[cuisine]++;
+            } else{
+                cuisineCounter[cuisine] = 1;
+            }
+        })
+    })
+    
+    // returnthe cuisine with the most tallies 
+    const mostCommonCuisine = Object.keys(cuisineCounter).reduce((trackingCuisine, nextCuisine) => cuisineCounter(trackingCuisine) > cuisineCounter[nextCuisine]? trackingCuisine : nextCuisine);
+    return mostCommonCuisine;
 }
 
+
+
 // EXTENSION:Can find restaurant with substring
+
+
+
+
+
+
