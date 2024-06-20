@@ -33,35 +33,33 @@ ScranAdvisor.prototype.findRestaurantsByCity = function(city) {
 
 module.exports = ScranAdvisor;
 
-// EXTENSION Attepmted: Can find the most common cuisine type
-ScranAdvisor.prototype.findMostCommonCuisine = function() {
-    // loop through each resturant 
-    // loop through the cusisines
-    // count the instances of the cuisiine as a i go 
-    // store these values....object/dictionary
-    
-    const cuisineCounter = {}; 
+ScranAdvisor.prototype.mostCommonCuisine = function (){
+    // for each restaurant loop through the cusines, counting as we go
+    const cuisineCounter = {};
+    // for each restaurant
     this.restaurants.forEach(restaurant => {
+        //  loop through the cuisines
         restaurant.cuisines.forEach(cuisine => {
-            if (cuisineCounter[cuisine]){
-                cuisineCounter[cuisine]++;
-            } else{
-                cuisineCounter[cuisine] = 1;
+            // if the cuisine is in the object, add 1 to the tally
+            if(cuisineCounter[cuisine]){ // if "JAPANESE exists"
+                cuisineCounter[cuisine]++; // add 1 to it
+            } else { // if it doesn't exist...
+                cuisineCounter[cuisine] = 1; // ... create JAPANESE: 1
             }
         })
     })
-    
-    // returnthe cuisine with the most tallies 
-    const mostCommonCuisine = Object.keys(cuisineCounter).reduce((trackingCuisine, nextCuisine) => cuisineCounter(trackingCuisine) > cuisineCounter[nextCuisine]? trackingCuisine : nextCuisine);
+
+    // Return the Cuisine with the most tallies
+    // loop though all the keys in the cuisineCounter, extracting the value
+    // x is the accumulator
+    const mostCommonCuisine = Object.keys(cuisineCounter).reduce((x, y) => cuisineCounter[x] > cuisineCounter[y] ? x : y);
+
     return mostCommonCuisine;
 }
 
+ScranAdvisor.prototype.search = function(searchTerm) {
+    return this.restaurants.filter(restaurant => restaurant.name.toLowerCase().includes(searchTerm));
+}
 
-
-// EXTENSION:Can find restaurant with substring
-
-
-
-
-
+module.exports = ScranAdvisor;
 
